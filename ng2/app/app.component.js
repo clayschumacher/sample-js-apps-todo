@@ -21,9 +21,9 @@
                     </tr>-->
                     <tr>
                         <th></th>
-                        <th><input type="text" class="form-control" placeholder="Task" [(innerText)]="task.name" onkeyup="keyAddTask(event)"></th>
+                        <th><input type="text" class="form-control" placeholder="Task" [(ngModel)]="task.name" (keyup)="keyAddTask($event)"></th>
                         <th>
-                            <button class="btn btn-s" (click)="addTask">
+                            <button class="btn btn-s" (click)="addTask()">
                                 <span class="glyphicon glyphicon-plus-sign"></span>
                             </button>
                         </th>
@@ -66,7 +66,7 @@
                     name: 'Drive to Store'
                 }
             ];
-            this.tasks.push(tasks);
+            this.tasks = this.tasks.concat(tasks);
       },
       addTask: function() {
           if (this.task.name) {
@@ -79,6 +79,11 @@
       },
       ngOnInit: function() {
           this.fetchTasks();
+      },
+      keyAddTask: function(event) {
+        if (event.keyCode === 13) {
+                this.addTask();
+            }
       }
     });
 })(window.app || (window.app = {}));
