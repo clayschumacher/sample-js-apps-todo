@@ -30,7 +30,7 @@
                     </tr>-->
                     <tr>
                         <th></th>
-                        <th><input type="text" class="form-control" placeholder="Task" v-model="task.name" v-focus onkeyup="keyAddTask(event)"></th>
+                        <th><input type="text" class="form-control" placeholder="Task" v-model="task.name" v-focus v-on:keyup="keyAddTask($event)"></th>
                         <th>
                             <button class="btn btn-s" v-on:click="addTask">
                                 <span class="glyphicon glyphicon-plus-sign"></span>
@@ -38,13 +38,13 @@
                         </th>
                 </thead>
                 <tbody>
-                    <tr v-for="task in tasks">
+                    <tr v-for="(task, index) in tasks">
                         <td>
                             <span class="glyphicon glyphicon-check"></span>
                         </td>
                         <td>{{ task.name }}</td>
                         <td>
-                            <button class="btn btn-s" v-on:click="deleteEvent($index)">
+                            <button class="btn btn-s" v-on:click="deleteTask(index)">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </button>
                         </td>

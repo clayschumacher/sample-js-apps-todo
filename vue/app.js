@@ -14,7 +14,6 @@ var app = new Vue({
     data: {
         task: { name: '' },
         tasks: [],
-        displayDate: '',
         user: { username: '', firstName: 'Clay', lastName: 'Schumacher'}
     },
 
@@ -57,8 +56,13 @@ var app = new Vue({
                 this.task = { name: '' };
             }
         },
+        keyAddTask: function(event) {
+            if (event.keyCode === 13) {
+                this.addTask();
+            }
+        },
 
-        deleteEvent: function (index) {
+        deleteTask: function (index) {
             if (confirm("Are you sure you want to mark complete?")) {
                 // $remove is deprecated in Vue 2.0, splice without a replacement list can be used.
                 this.tasks.splice(index, 1);
@@ -67,9 +71,3 @@ var app = new Vue({
 
     }
 })
-
-function keyAddTask(event) {
-    if (event.keyCode === 13) {
-        app.addTask();
-    }
-}
