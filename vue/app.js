@@ -18,15 +18,12 @@ var app = new Vue({
         user: { username: '', firstName: 'Clay', lastName: 'Schumacher'}
     },
 
-    // Anything within the ready function will run when the application loads
+    // Anything within the mounted function will run when the application loads
     mounted: function () {
         this.$nextTick(function() {
             // When the application loads, we want to call the method that initializes
             // some data
             this.fetchTasks();
-            var date = new Date();
-            var options = { weekday: "short", year: "numeric", month: "short", day: "numeric" };
-            this.displayDate = date.toLocaleDateString("en-us", options);
         });
     },
 
