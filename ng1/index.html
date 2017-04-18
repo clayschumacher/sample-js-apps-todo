@@ -10,9 +10,13 @@
   </head>
   <body>
       <div ng-controller="lunchLearnCtrl">
-        <li ng-repeat="item in currentList">
+        <li ng-repeat="item in currentList track by $index">
             {{item}}
+            <button ng-click="removeItem($index)">Remove me!</button>
         </li>
+        <input type="text" placeholder="Enter item to add to list" ng-model="itemToAdd"></input>
+        <button ng-click="addItem(itemToAdd)">Add item to list</button>
+        {{error}}
       </div>
   </body>
 </html>
