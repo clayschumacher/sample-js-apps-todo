@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html ng-app="lunchLearnApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="index.js"></script>
+    <link href="styles.css" rel="stylesheet"></link>
+  </head>
+  <body>
+      <div ng-controller="lunchLearnCtrl">
+        <table style="border: 1px solid black;">
+          <tr ng-repeat="item in currentList track by $index">
+            <td class="table-data">{{item}} <span style="float: right;"><img src="x.png" class="x-button" ng-click="removeItem($index)"/> </span></td>
+          </tr>
+        </table>
+        <input type="text" style="margin-top: 20px;" placeholder="Enter item to add to list" ng-model="itemToAdd"></input>
+        <button class="nice-button" ng-click="addItem(itemToAdd)">Add item to list</button>
+        {{error}}
+      </div>
+  </body>
+</html>
